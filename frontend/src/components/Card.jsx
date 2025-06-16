@@ -10,7 +10,7 @@ const Card = ({note, set_notes}) => {
         if (!window.confirm('Are you sure you want to delte this note?')) return
         try {
             await api.delete(`/notes/${id}`)
-            set_notes((prev) => prev.filter(note._id !== id))
+            set_notes((prev) => prev.filter((current_note) => current_note._id !== id))
             toast.success('Note deleted successfully.')
         } catch (err) {
             console.log(`Error in handle delete ${err}`)
